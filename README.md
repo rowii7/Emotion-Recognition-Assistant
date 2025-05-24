@@ -1,118 +1,65 @@
 # 🧠 Emotion Recognition Assistant (Sentiment Analysis Component)
 
-This repository presents the **Sentiment Analysis** module of the *Emotion Recognition Assistant* project — a deep learning system developed to support individuals who face difficulties understanding emotional cues, such as those with autism, alexithymia, social anxiety, or traumatic brain injury (TBI). While the full project includes both audio-based emotion recognition and text-based sentiment classification, this repository focuses on the **text sentiment analysis** component only.
+This repository showcases my contribution to the **Emotion Recognition Assistant**, a graduation project developed at Yarmouk University. The overall goal of the project is to help individuals who have difficulty interpreting emotions in speech and text — such as those with autism, alexithymia, social anxiety, or traumatic brain injury (TBI).
 
-> 🔒 **Note:** Due to academic restrictions, full project code is not publicly available. This repository contains selected methods, dataset structure, and key insights.
+> 🔍 **Note:** This repository focuses specifically on the **Sentiment Analysis** portion of the project. Due to academic policy, full implementation details and datasets are not shared publicly.
 
 ---
 
-## 📌 Project Overview
+## 📌 Project Summary
 
-Understanding emotions is key to effective communication, but many people struggle with interpreting emotional cues. This project addresses that challenge by combining machine learning models to analyze:
-- Emotions in speech
-- Sentiment in text
+The Emotion Recognition Assistant is an intelligent application designed to detect:
+- **Emotions from speech**
+- **Sentiment from text**
 
-This repository focuses on the **text-based sentiment analysis**, where models classify text into:
+It provides real-time emotional feedback to users through an accessible web interface. While the full project includes multiple machine learning modules, my contribution was centered on **text-based sentiment classification**.
+
+---
+
+## 🧩 My Contribution: Sentiment Analysis
+
+For the sentiment analysis component, I combined datasets from **Kaggle** and **Hugging Face** to build a well-balanced dataset with three sentiment classes:
 - **Negative**
 - **Neutral**
 - **Positive**
 
----
+To improve generalization and fairness in training, I carefully handled **class imbalance** by integrating datasets and applying **downsampling** where necessary — ensuring minimal data loss while preserving diversity.
 
-## 🗂 Dataset
+I trained and evaluated **two deep learning models** for this task:
+- **LSTM** (Long Short-Term Memory)
+- **GRU** (Gated Recurrent Unit)
 
-The sentiment analysis dataset was created by combining sources from **Kaggle** and **Hugging Face** to achieve a balanced, high-quality corpus of 933,000 samples. Class imbalance was addressed using **downsampling**, which minimized data loss while improving generalization.
-
----
-
-## 🧹 Preprocessing
-
-Key preprocessing steps included:
-
-- **Text Cleaning**
-  - Lowercasing
-  - URL & user mention removal
-  - Repeated character reduction
-  - Stop word removal
-  - Stemming
-- **Tokenization and Padding**
-  - Vocabulary size: 55,000
-  - Sequence length: 30 (based on histogram analysis)
-- **Label Encoding**
-  - Multi-class one-hot encoding
+Both models were enhanced using attention mechanisms and regularization techniques to improve performance and reduce overfitting.
 
 ---
 
-## 🧠 Model Architecture
+## 📈 Results
 
-Two RNN-based models were explored: **LSTM** and **GRU**, both enhanced with **Attention Mechanisms**.
+The models were evaluated on a large-scale test set using accuracy and confusion matrix analysis. Final results:
 
-### 🌀 LSTM (Final Model)
-- Embedding Layer: 256-dim vectors
-- Bidirectional LSTM (x2)
-- Attention Layer
-- Dense layers + Softmax
-- Dropout + L2 Regularization
+| Model | Accuracy |
+|-------|----------|
+| LSTM  | 91%      |
+| GRU   | 90%      |
 
-**Performance:**  
-✅ **Final Accuracy:** 91%  
-⚖️ Best balance between caution and confidence in classification
-
-### ⚡ GRU
-- Faster, fewer parameters than LSTM
-- Performs well on positive class, but prone to overconfidence
-
-**Performance:**  
-✅ **Final Accuracy:** 90%  
-⚠️ Sometimes misclassifies negative as positive
+- Most misclassifications were between **positive** and **neutral**, which is less critical than reversing positive/negative sentiment.
+- The LSTM model showed better balance across all classes, making it more suitable for real-world use.
 
 ---
 
-## 📊 Evaluation
+## 🚀 Application Overview
 
-Metrics used:
-- **Accuracy**
-- **Confusion Matrix** to assess precision across classes
+The Emotion Recognition Assistant is a Streamlit-based web application that integrates both:
 
-**Common Misclassifications:**
-- Positive → Neutral (acceptable)
-- Negative → Neutral (preferable to mislabeling as positive)
+- **Speech Emotion Recognition**: Users can upload audio files to analyze emotional tone in speech.
+- **Text Sentiment Analysis**: Users can input written text to detect underlying sentiment (negative, neutral, or positive).
 
-These cautious misclassifications suggest the model errs on the side of neutrality, which is often desirable in real-world applications.
+The application provides real-time, intuitive feedback and is designed with accessibility in mind — particularly for users who experience difficulty in interpreting emotional cues.
 
----
-
-## 🚀 Application Preview
-
-This module is part of a larger Streamlit-based app that allows users to:
-
-- Input text and receive real-time sentiment analysis
-- View results as negative, neutral, or positive
-- Receive explanations powered by LLMs (e.g., GPT)
-
-> 
+> While the full system includes both speech and text analysis, this repository highlights the sentiment analysis (text) component as part of my individual contribution.
 
 ---
 
-## 🔧 Future Work
-
-- Expand support for **multi-language sentiment classification**
-- Include **sarcasm and contextual awareness**
-- Integrate real-time analysis features for broader application use
-- Improve robustness with more balanced, real-world text samples
-
----
-
-## 📁 Disclaimer
-
-The full project includes:
-- Speech Emotion Recognition using CNNs and ViTs
-- Custom loss functions and Squeeze-and-Excitation (SE) blocks
-- Streamlit-based GUI for audio and text inputs
-
-> However, **this public repository includes only the sentiment analysis portion** due to university restrictions.
-
----
 
 ## 👩‍💻 Authors
 
