@@ -69,7 +69,7 @@ model1 = Sequential([
     Bidirectional(LSTM(hidden_dim, return_sequences=True)),
     Attention(),
     Dropout(####),
-    Dense(#####, activation='relu', kernel_regularizer=l2(0.01)),
+    Dense(#####, activation='relu', ###############),
     Dropout(########),
     Dense(##, activation='relu', kernel_regularizer=#########),
     Dropout(####),
